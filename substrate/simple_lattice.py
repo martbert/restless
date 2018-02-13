@@ -46,7 +46,8 @@ class SimpleLattice(Model):
         )
         #
         # Set up agents
-        self.agents = [Cell(substrate=self, energy=random.random(), activated=random.random() <= goal_density)]
+        self.agents = [Cell(substrate=self, energy=random.random(), activated=random.random() <= goal_density)
+                       for _ in range(self.height * self.width)]
         # TODO: assign them to a particular (x,y) in lattice
         # put everyone on the scheduler:
         [self.schedule.add(agent) for agent in self.agents]
